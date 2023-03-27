@@ -4,9 +4,7 @@
   "description": "fix-tsc-es-imports uses shelljs sed to fix default extensionless typescript ECMAScript compiled code relative imports and exports, properly adding .js extensions.",
   "type": "module",
   "main": "fix_tsc_es_imports.js",
-  "bin": {
-    "fix_tsc_es_imports": "./fix_tsc_es_imports.js"
-  },
+  "bin": "./fix_tsc_es_imports.js",
   "scripts": {
     "test": "echo \"Error: no test specified yet\" && exit 1"
   },

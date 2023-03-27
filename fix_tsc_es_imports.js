@@ -53,6 +53,7 @@ function getArgs() {
     else if (element === "-d" || element === "--dry") {
       setup.dry_run = true;
       setup.verbose = true;
+      setup.ask_to_proceed = false;
     } else if (element.includes(".json") || element.includes(".JSON")) setup.alternate_tsconfig = element;
     else printHelp();
   }
@@ -70,7 +71,7 @@ Usage: fix_tsc_imports [-h|--help] [-y] [alternative_tsconfig.json]
   -h --help     usage info
   -y --yes      ignore confirmation and proceed straight away
   -v --verbose  verbose, outputs sed changed strings
-  -d --dry      dry run, do not change anything and output sed changed strings (implied -v)
+  -d --dry      dry run, do not change anything and output sed changed strings (implied -v and -y)
 
 An alternative 'tsconfig.json' can be provided. It must have a '.json' extension. For example:
 
