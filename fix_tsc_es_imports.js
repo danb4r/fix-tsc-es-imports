@@ -55,7 +55,7 @@ function getArgs() {
 
     if (element === "-h" || element === "--help") printHelp();
     else if (element === "-y" || element === "--yes") setup.ask_to_proceed = false;
-    else if (element === "-v" || element === "--verbose") setup.verbose = true;
+    else if (element === "-V" || element === "--verbose") setup.verbose = true;
     else if (element === "-d" || element === "--dry") {
       setup.dry_run = true;
       setup.verbose = true;
@@ -69,14 +69,15 @@ function getArgs() {
  * Prints a basic usage help
  */
 function printHelp() {
-  console.log(`
-fix-tsc-es-imports looks for every '.js' file at the 'compileOptions.outDir' folder found on the default 'tsconfig.json' or another provided '.json' config file, and fixes all extensionless typescript relative only imports and exports, adding '.js' extensions to them.
+  console.log(`fix-tsc-es-imports:
+
+Looks for every '.js' file at the 'compileOptions.outDir' folder found on the default 'tsconfig.json' or another provided '.json' config file. Then fixes all extensionless typescript relative imports and exports, adding '.js' extensions to them.
 
 Usage: fix_tsc_imports [-h|--help] [-y] [alternative_tsconfig.json]
 
   -h --help     usage info
   -y --yes      ignore confirmation and proceed straight away
-  -v --verbose  verbose, outputs sed changed strings
+  -V --verbose  verbose, outputs sed changed strings
   -d --dry      dry run, do not change anything and output sed changed strings (implied -v and -y)
 
 An alternative 'tsconfig.json' can be provided. It must have a '.json' extension. For example:
@@ -106,7 +107,7 @@ function proceed(foundFiles) {
   if (!setup.dry_run) {
     sh.sed("-i", MATCH_PATTERN, "$1$2$3.js$4", foundFiles);
     console.log(APP_ID, "done.");
-  } else console.log(APP_ID, "nothing done. Dry run.");
+  } else console.log(APP_ID, "nothing done, dry run.");
 }
 
 /**

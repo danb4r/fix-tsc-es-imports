@@ -18,7 +18,7 @@ Add it to your `package.json` module build script after your tsc run.
 
 ## How it works
 
-**fix-tsc-es-imports** looks for every `.js` file at the `compileOptions.outDir` folder found on the default `tsconfig.json` or another provided `.json` config file, and fixes all extensionless typescript **relative only** imports and exports, adding `.js` extensions to them.
+**fix-tsc-es-imports** looks for every `.js` file at the `compileOptions.outDir` folder found on the default `tsconfig.json` or another provided `.json` config file. Then it fixes all extensionless typescript **relative** imports and exports, adding `.js` extensions to them.
 
 ## Usage
 
@@ -29,7 +29,7 @@ fix_tsc_imports [-h|--help] [-y] [alternative_tsconfig.json]
 
   -h --help     usage info
   -y --yes      ignore confirmation and proceed straight away
-  -v --verbose  verbose, outputs sed changed strings
+  -V --verbose  verbose, outputs sed changed strings
   -d --dry      dry run, do not change anything and output sed changed strings (implied -v and -y)
 ```
 
