@@ -34,6 +34,12 @@ try {
 }
 console.log(APP_ID, "found", files.length, ".js files:", files);
 
+/** Show what will be done */
+if (setup.verbose) {
+  console.log();
+  console.log(sh.grep(MATCH_PATTERN, files).toString());
+}
+
 /** Check if the -y flag has been issued or ask for a confirmation to proceed */
 if (setup.ask_to_proceed) askToProceed() ? proceed(files) : process.exit(0);
 else proceed(files);
@@ -97,16 +103,10 @@ function proceed(foundFiles) {
   /**
    * From <https://stackoverflow.com/questions/62619058/appending-js-extension-on-relative-import-statements-during-typescript-compilat/73075563#73075563>
    */
-  const result = setup.dry_run
-    ? sh.sed(MATCH_PATTERN, "$1$2$3.js$4", foundFiles)
-    : sh.sed("-i", MATCH_PATTERN, "$1$2$3.js$4", foundFiles);
-
-  if (setup.verbose) {
-    console.log();
-    console.log(result.stdout);
-  }
-
-  console.log(APP_ID, "done.");
+  if (!setup.dry_run) {
+    sh.sed("-i", MATCH_PATTERN, "$1$2$3.js$4", foundFiles);
+    console.log(APP_ID, "done.");
+  } else console.log(APP_ID, "nothing done. Dry run.");
 }
 
 /**
