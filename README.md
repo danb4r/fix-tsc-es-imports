@@ -52,7 +52,7 @@ In face of that situation, our options are:
 1. Forget about TSC and use Babel, losing type checking. **Undesirable.**
 2. Keep TSC type checking and types generation and use Babel alongside to build our modules. **Slower and mostly unnecessary.**
 3. Use Webpack, Babel and TSC altogether to produce a compiled packed module. We do not need to do that because modules will mostly certainly be included in another package that will be transpiled and packed down the development chain. **So, also unnecessary.**
-4. Config Prettier to not complain about imports with extensions and manually review all our imports to have a fake `.js` extension while the source code has a `.ts` or `.tsx` extension. **That does not seam to be the smartest option.**
+4. Config Prettier to not complain about imports with extensions and manually review all our imports to have a fake `.js` extension while the source code has a `.ts` or `.tsx` extension. **That does not seem to be the smartest option.**
 5. Use the `.mjs` and `.cjs` files extensions. **Very overwhelming**.
 6. Use TSC to compile our Typescript code to ES6 or another module code, and generate maps and types, and got that module code properly imported in our other projects. **That is mostly certain the best way to go.**
 
