@@ -1,6 +1,6 @@
 {
   "name": "fix-tsc-es-imports",
-  "version": "0.1.2",
+  "version": "0.1.1",
   "description": "fix-tsc-es-imports uses shelljs sed to fix default extensionless typescript ECMAScript compiled code relative imports and exports, properly adding .js extensions.",
   "type": "module",
   "main": "fix_tsc_es_imports.js",
