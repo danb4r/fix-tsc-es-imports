@@ -1,6 +1,20 @@
 # fix-tsc-es-imports
 
-**fix-tsc-es-imports** uses shelljs sed to fix default extensionless typescript ECMAScript compiled code relative imports and exports, properly adding .js extensions.
+**fix-tsc-es-imports** uses [ShellJS's sed](https://github.com/shelljs/shelljs#sedoptions-search_regex-replacement-file--file-) to fix default extensionless typescript ECMAScript compiled code relative imports and exports, properly adding .js extensions.
+
+## Installing
+
+```sh
+npm install fix-tsc-es-imports
+```
+
+## Running
+
+```sh
+npx fix-tsc-es-imports
+```
+
+Add it to your `package.json` module build script after your tsc run.
 
 ## How it works
 
@@ -38,11 +52,11 @@ In face of that situation, our options are:
 1. Forget about TSC and use Babel, losing type checking. **Undesirable.**
 2. Keep TSC type checking and types generation and use Babel alongside to build our modules. **Slower and mostly unnecessary.**
 3. Use Webpack, Babel and TSC altogether to produce a compiled packed module. We do not need to do that because modules will mostly certainly be included in another package that will be transpiled and packed down the development chain. **So, also unnecessary.**
-4. Config Prettier to not complain about imports with extensions and manually review all our imports to have a fake `.js` extension while the source code has a `.ts` or `.tsx` extension. **That does not seams to be the smartest option.**
+4. Config Prettier to not complain about imports with extensions and manually review all our imports to have a fake `.js` extension while the source code has a `.ts` or `.tsx` extension. **That does not seem to be the smartest option.**
 5. Use the `.mjs` and `.cjs` files extensions. **Very overwhelming**.
 6. Use TSC to compile our Typescript code to ES6 or another module code, and generate maps and types, and got that module code properly imported in our other projects. **That is mostly certain the best way to go.**
 
-So, this small script was built to add a `.js` extension to every extensionless Typescript generated `import` found in the compiled code.
+So, this small script was built to add a `.js` extension to every extensionless Typescript generated `import` found in the compiled code. As current tsc compiler versions does not do that.
 
 ## References
 
@@ -55,4 +69,4 @@ MIT. See `LICENSE.md` file.
 
 ## Credits
 
-I borrowed the RegEx proposed by wesbos [here](https://stackoverflow.com/questions/62619058/appending-js-extension-on-relative-import-statements-during-typescript-compilat/73075563#73075563). And borrowed the subfolder verification code from Ilya Kozhevnikov [here](https://stackoverflow.com/questions/37521893/determine-if-a-path-is-subdirectory-of-another-in-node-js).
+I borrowed the RegEx proposed by wesbos [here](https://stackoverflow.com/questions/62619058/appending-js-extension-on-relative-import-statements-during-typescript-compilat/73075563#73075563). And borrowed the subfolder verification code from Ilya Kozhevnikov [here](https://stackoverflow.com/questions/37521893/determine-if-a-path-is-subdirectory-of-another-in-node-js). Thank you.
