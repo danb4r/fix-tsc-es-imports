@@ -1,0 +1,37 @@
+{
+  "name": "fix-tsc-imports",
+  "version": "0.1.0",
+  "description": "Fixes default extensionless typescript compiled code ECMAScript imports, adding .js extensions.",
+  "type": "module",
+  "main": "fix_tsc_imports.js",
+  "bin": {
+    "fix_tsc_imports": "./fix_tsc_imports.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified yet\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danb4r/fix-tsc-imports.git"
+  },
+  "keywords": [
+    "tsc",
+    "typescript",
+    "compiler",
+    "extensions",
+    "import",
+    "export",
+    "ecmascript"
+  ],
+  "author": "Danilo Araujo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danb4r/fix-tsc-imports/issues"
+  },
+  "homepage": "https://github.com/danb4r/fix-tsc-imports#readme",
+  "dependencies": {
+    "comment-json": "^4.2.3",
+    "prompt-sync": "^4.2.0",
+    "shelljs": "^0.8.5"
+  }
+}
