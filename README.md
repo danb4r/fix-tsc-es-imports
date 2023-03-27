@@ -1,10 +1,10 @@
-# fix-tsc-imports
+# fix-tsc-es-imports
 
-Fixes default extensionless typescript compiled code ECMAScript relative imports, adding .js extensions.
+**fix-tsc-es-imports** uses shelljs sed to fix default extensionless typescript ECMAScript compiled code relative imports and exports, properly adding .js extensions.
 
 ## How it works
 
-**fix_ts_imports** finds in every '.js' file at the 'compileOptions.outDir' folder found on the default 'tsconfig.json' or another provided config file, and fixes all extensionless typescript **relative only** imports, adding '.js' extensions to them.
+**fix-tsc-es-imports** looks for every `.js` file at the `compileOptions.outDir` folder found on the default `tsconfig.json` or another provided `.json` config file, and fixes all extensionless typescript **relative only** imports and exports, adding `.js` extensions to them.
 
 ## Usage
 
@@ -13,21 +13,21 @@ Usage:
 ```script
 fix_tsc_imports [-h|--help] [-y] [alternative_tsconfig.json]
 
-  -h --help   usage info
-  -y          ignore confirmation and proceed straight away
+  -h --help     usage info
+  -y --yes      ignore confirmation and proceed straight away
+  -v --verbose  verbose, outputs sed changed strings
+  -d --dry      dry run, do not change anything and output sed changed strings (implied -v)
 ```
 
 An alternative `tsconfig.json` can be provided. It must have a `.json` extension. For example:
 
 `fix_tsc_imports -y ./dev/dev_tsconfig.json`
 
-Otherwise `./tsconfig.json` will be used.
-
-See `tsconfig_sample.json` file.
+See `test/tsconfig_sample.json` file.
 
 ## Safe measures
 
-**fix-tsc-imports** does a few safe checks to avoid touching the wrong code. It will check if `outDir` is a subfolder of the current folder and will not accept this folder names: `src`, `node_modules`, `app`.
+**fix-tsc-es-imports** does a few safe checks to avoid touching the wrong code. It will check if `outDir` is a subfolder of the current folder and will not accept this folder names: `src`, `node_modules`, `app`.
 
 ## Why?
 
