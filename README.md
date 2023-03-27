@@ -5,7 +5,7 @@
 ## Installing
 
 ```sh
-npm install fix-tsc-es-imports
+npm install --save-dev fix-tsc-es-imports
 ```
 
 ## Running
@@ -14,7 +14,17 @@ npm install fix-tsc-es-imports
 npx fix-tsc-es-imports
 ```
 
-Add it to your `package.json` module build script after your tsc run.
+Or add it to your `package.json` module build script after your tsc run like this:
+
+```json
+{
+  "scripts": {
+    "clean": "shx rm -rf lib",
+    "tsc": "tsc --listEmittedFiles",
+    "build": "npm run clean && npm run tsc && fix-tsc-es-imports -y -V"
+  }
+}
+```
 
 ## How it works
 
@@ -43,7 +53,7 @@ See `test/tsconfig_sample.json` file.
 
 **fix-tsc-es-imports** does a few safe checks to avoid touching the wrong code. It will check if `outDir` is a subfolder of the current folder and will not accept this folder names: `src`, `node_modules`, `app`.
 
-## Why?
+## Why do we need fix-tsc-es-imports?
 
 Because when compiling ES6 modules with the current Typescript Compiler it generates `.js` files from `.ts` and `.tsx` files without properly fixing the imports expected from a ECMAScript module.
 
