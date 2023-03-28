@@ -1,6 +1,6 @@
 # fix-tsc-es-imports
 
-**fix-tsc-es-imports** uses [ShellJS's sed](https://github.com/shelljs/shelljs#sedoptions-search_regex-replacement-file--file-) to fix default extensionless typescript ECMAScript compiled code relative imports and exports, properly adding .js extensions.
+**fix-tsc-es-imports** uses [ShellJS' sed](https://github.com/shelljs/shelljs#sedoptions-search_regex-replacement-file--file-) to fix default extensionless typescript ECMAScript compiled code relative imports and exports, properly adding .js extensions.
 
 ## Installing
 
