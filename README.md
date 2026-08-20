@@ -1,5 +1,11 @@
 # fix-tsc-es-imports
 
+![Maintained - No](https://img.shields.io/badge/maintained-no-red)
+
+> [!CAUTION]
+> **This project is unmaintained and deprecated.**
+> It is no longer supported, and no further updates, security patches, or bug fixes will be issued.
+
 **fix-tsc-es-imports** uses [ShellJS sed](https://github.com/shelljs/shelljs#sedoptions-search_regex-replacement-file--file-) to fix default extensionless typescript ECMAScript compiled code relative imports and exports, properly adding .js extensions.
 
 ## Installing
