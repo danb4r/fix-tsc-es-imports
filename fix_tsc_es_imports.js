@@ -8,7 +8,7 @@ import sh from "shelljs";
 
 const APP_ID = "FIX_TS_IMPORTS:";
 const DEFAULT_TSCONFIG = "./tsconfig.json";
-const MATCH_PATTERN = /(from\s+)(["'])(?!.*\.js)(\.?\.\/.*)(["'])/;
+const MATCH_PATTERN = /(["'])(?!.*\.js)(\.?\.\/.*)(["'])/;
 const FORBIDDEN_FOLDERS = ["src", "node_modules", "app"];
 
 const setup = {
@@ -54,13 +54,15 @@ function getArgs() {
     const element = args[index - 1];
 
     if (element === "-h" || element === "--help") printHelp();
-    else if (element === "-y" || element === "--yes") setup.ask_to_proceed = false;
+    else if (element === "-y" || element === "--yes")
+      setup.ask_to_proceed = false;
     else if (element === "-V" || element === "--verbose") setup.verbose = true;
     else if (element === "-d" || element === "--dry") {
       setup.dry_run = true;
       setup.verbose = true;
       setup.ask_to_proceed = false;
-    } else if (element.includes(".json") || element.includes(".JSON")) setup.alternate_tsconfig = element;
+    } else if (element.includes(".json") || element.includes(".JSON"))
+      setup.alternate_tsconfig = element;
     else printHelp();
   }
 }
@@ -118,9 +120,14 @@ function getOutDirFromConfig(alternativeTsConfig) {
   let outDir;
 
   try {
-    outDir = cJson.parse(fs.readFileSync(tsConfig).toString()).compilerOptions.outDir;
+    outDir = cJson.parse(fs.readFileSync(tsConfig).toString()).compilerOptions
+      .outDir;
   } catch (error) {
-    console.error(APP_ID, "ERROR:", "could not find 'compilerOptions.outDir' in '" + tsConfig + "'");
+    console.error(
+      APP_ID,
+      "ERROR:",
+      "could not find 'compilerOptions.outDir' in '" + tsConfig + "'"
+    );
     process.exit(1);
   }
 
@@ -153,5 +160,10 @@ function checkSubfolder(folder) {
     if (value === relative.toLowerCase()) forbidden = true;
   });
 
-  return !forbidden && relative && !relative.startsWith("..") && !path.isAbsolute(relative);
+  return (
+    !forbidden &&
+    relative &&
+    !relative.startsWith("..") &&
+    !path.isAbsolute(relative)
+  );
 }
